@@ -22,7 +22,7 @@ function App() {
   }
 
   const card = cards[selectedCard]
-  const character = characters[selectedCharacter]
+  // const character = characters[selectedCharacter]
 
   return <Container maxWidth="xs">
     <Picker
