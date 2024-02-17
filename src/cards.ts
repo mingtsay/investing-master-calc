@@ -110,7 +110,7 @@ const cards: Cards = {
     additional: {
       type: 'connectionsCard',
       text: '拿取 3 張創業人脈牌放在面前，A 面朝上。',
-      amount: 1000,
+      amount: 1500,
     },
     description: '在理財課程的場合，更容易遇到對投資創業有興趣的人脈，拓展生活圈，找到共同築夢的夥伴。',
   },
