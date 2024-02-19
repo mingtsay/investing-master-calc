@@ -33,7 +33,7 @@ function App() {
       onSelect={onCharacterSelect}
       selected={selectedCharacter}
       subheader="請在此選擇您的遊戲角色，或點選「隨機選擇」由系統自動為您選擇。"
-      title={isCharacterSelected ? `您選則的角色為「${characters[selectedCharacter]}」` : '選擇遊戲角色'}
+      title={isCharacterSelected ? `角色名稱：${characters[selectedCharacter].title}` : '選擇遊戲角色'}
     />
     <Picker
       isSelected={isCharacterColorSelected}
@@ -41,7 +41,7 @@ function App() {
       onSelect={onCharacterColorSelect}
       selected={selectedCharacterColor}
       subheader="由於本桌遊出貨時，各個角色顏色為隨機出貨，因此請您從這四種顏色中挑選出您的角色顏色。"
-      title="選擇遊戲角色顏色"
+      title={isCharacterColorSelected ? `角色顏色：${characterColors[selectedCharacterColor].title}` : '選擇遊戲角色顏色'}
     />
     <Picker
       isSelected={isCardSelected}
