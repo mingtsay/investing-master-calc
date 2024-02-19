@@ -17,8 +17,8 @@ import PickerItem, {PickerItemType} from './PickerItem'
 type PickerProps = {
   isSelected: boolean,
   items: PickerItemType,
-  onSelect: (id: number) => void,
-  selected: number,
+  onSelect: (id: string) => void,
+  selected: string,
   subheader: string,
   title: string,
 };
@@ -33,7 +33,7 @@ const Picker: React.FC<PickerProps> = (props): ReactElement => {
     title,
   } = props
 
-  const ids = Object.keys(items).map(Number)
+  const ids = Object.keys(items)
 
   const [expanded, setExpanded] = React.useState(!isSelected)
 
@@ -41,7 +41,7 @@ const Picker: React.FC<PickerProps> = (props): ReactElement => {
     setExpanded(v => !v)
   }
 
-  const handleSelect = (id: number) => {
+  const handleSelect = (id: string) => {
     onSelect(id)
     if (!isSelected) setExpanded(false)
   }
@@ -52,7 +52,7 @@ const Picker: React.FC<PickerProps> = (props): ReactElement => {
   }
 
   const handleDeselect = () => {
-    onSelect(0)
+    onSelect('')
   }
 
   return <Card variant="outlined" sx={{m: 4}}>
@@ -75,11 +75,11 @@ const Picker: React.FC<PickerProps> = (props): ReactElement => {
     <Collapse in={expanded} timeout="auto" unmountOnExit>
       <CardContent>
         <List disablePadding>
-          {ids.map(cardId => <PickerItem
-            key={`card-${cardId}`}
-            id={cardId}
+          {ids.map(id => <PickerItem
+            key={`item-${id}`}
+            id={id}
             items={items}
-            selected={selected}
+            selected={selected === id}
             onSelect={handleSelect}
           />)}
         </List>

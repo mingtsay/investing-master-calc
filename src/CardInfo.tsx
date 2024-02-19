@@ -10,7 +10,7 @@ import {
   SportsScore as SportsScoreIcon,
 } from '@mui/icons-material'
 import React from 'react'
-import {Card as CardType} from './cards'
+import {CardType} from './data'
 
 const CardInfo: React.FC<{ card: CardType }> = ({card}) => {
   return <Card variant="outlined" sx={{m: 4, backgroundColor: `${card.color}66`}}>

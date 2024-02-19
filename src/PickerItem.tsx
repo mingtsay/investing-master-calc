@@ -5,13 +5,13 @@ import {
 } from '@mui/icons-material'
 import React from 'react'
 
-export type PickerItemType = { [index: number]: { title: string, color: string } }
+export type PickerItemType = { [id: string]: { title: string, color?: string } }
 
 const PickerItem: React.FC<{
-  id: number,
+  id: string,
   items: PickerItemType,
-  onSelect: (cardId: number) => void,
-  selected: number,
+  onSelect: (cardId: string) => void,
+  selected: boolean,
 }> = (props) => {
   const {
     id,
@@ -21,12 +21,11 @@ const PickerItem: React.FC<{
   } = props
 
   const item = items[id]
-  const isSelected = selected === id
 
-  return <ListItem disablePadding sx={isSelected ? {backgroundColor: item.color} : undefined}>
+  return <ListItem disablePadding sx={(selected && item.color) ? {backgroundColor: item.color} : undefined}>
     <ListItemButton dense onClick={() => onSelect(id)}>
       <ListItemIcon>
-        {isSelected ? <RadioButtonCheckedIcon/> : <RadioButtonUncheckedIcon sx={{color: item.color}}/>}
+        {selected ? <RadioButtonCheckedIcon/> : <RadioButtonUncheckedIcon sx={{color: item.color || undefined}}/>}
       </ListItemIcon>
       <ListItemText>{item.title}</ListItemText>
     </ListItemButton>
